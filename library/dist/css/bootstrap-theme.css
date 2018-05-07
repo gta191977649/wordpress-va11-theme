@@ -1,0 +1,366 @@
+/*
+  主题创意来自: VA-11 
+  制作者: Episodes
+  QQ: 191977649
+*/
+.scanlines {
+  position: relative;
+  overflow: scroll;
+
+}
+.scanlines:before, .scanlines:after {
+  display: block;
+  pointer-events: none;
+  content: '';
+  position: absolute;
+}
+.scanlines:before {
+  width: 100%;
+  height: 2px;
+  z-index: 2147483649;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0.75;
+  -webkit-animation: scanline 6s linear infinite;
+          animation: scanline 6s linear infinite;
+}
+
+.scanlines:after {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2147483648;
+  background: -webkit-linear-gradient(top, transparent 50%, rgba(0, 0, 0, 0.2) 51%);
+  background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.2) 51%);
+  background-size: 100% 4px;
+  -webkit-animation: scanlines 1s steps(60) infinite;
+          animation: scanlines 1s steps(60) infinite;
+}
+
+/* ANIMATE UNIQUE SCANLINE */
+/*
+@-webkit-keyframes scanline {
+  0% {
+    -webkit-transform: translate3d(0, 100hv, 0);
+            transform: translate3d(0, 100hv, 0);
+  }
+}
+@keyframes scanline {
+  0% {
+    -webkit-transform: translate3d(0, 100hv, 0);
+            transform: translate3d(0, 100hv, 0);
+  }
+}
+
+@-webkit-keyframes scanlines {
+  0% {
+    background-position: 0 50%;
+  }
+}
+@keyframes scanlines {
+  0% {
+    background-position: 0 50%;
+  }
+}
+*/
+
+@font-face {
+    font-family: main_font;
+    src: url("fonts/pixil_chinese.TTF");
+	font-display: swap;
+}
+body{
+  font-family: main_font,SimSun;
+  background: #264bff;
+  font-weight: bold;
+}
+
+.form-control {
+  background-color: white;
+  -webkit-box-shadow: 9.5px 9.5px 0 rgb(0,0,0);
+  box-shadow: 9.5px 9.5px 0 rgb(0,0,0);
+  color:black;
+}
+
+.active a {
+  color:white;
+}
+
+.container-default {
+  background: #1B1B1B;
+
+}
+
+
+.btn-default .badge,
+.btn-primary .badge,
+.btn-success .badge,
+.btn-info .badge,
+.btn-warning .badge,
+.btn-danger .badge {
+  text-shadow: none;
+}
+.btn:active,
+.btn.active {
+  background-image: none;
+}
+.btn-default {
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+  border-color: white;
+  border-color: white;
+  background-color :white;
+}
+.btn-default:hover,
+.btn-default:focus {
+  background-color: white;
+  background-position: 0 -15px;
+}
+.btn-default:active,
+.btn-default.active {
+  background-color: white;
+  border-color: white;
+}
+.btn-default.disabled,
+.btn-default:disabled,
+.btn-default[disabled] {
+  background-color: white;
+  background-image: none;
+}
+.btn-primary {
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+  border-color: #0a98ac;
+  background-color: #0a98ac;
+  color:white;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #0a98ac;
+  background-position: 0 -15px;
+}
+.btn-primary:active,
+.btn-primary.active {
+  background-color: #0a98ac;
+  border-color: #0a98ac;
+}
+.btn-primary.disabled,
+.btn-primary:disabled,
+.btn-primary[disabled] {
+  background-color: #0a98ac;
+  background-image: none;
+}
+.btn-success {
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+  border-color: #02A66C;
+  background-color:#02A66C;
+}
+.btn-success:hover,
+.btn-success:focus {
+  background-color:#02A66C;
+  background-position: 0 -15px;
+}
+.btn-success:active,
+.btn-success.active {
+  background-color: #02A66C;
+  border-color: #02A66C;
+}
+.btn-success.disabled,
+.btn-success:disabled,
+.btn-success[disabled] {
+  background-color: #02A66C;
+  background-image: none;
+}
+.btn-info {
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+  border-color: #ee813f;
+  background-color: #ee813f;
+  color: white;
+}
+.btn-info:hover,
+.btn-info:focus {
+  background-color: #ee813f;
+  background-position: 0 -15px;
+}
+.btn-info:active,
+.btn-info.active {
+  background-color: #ee813f;
+  border-color: #ee813f;
+}
+.btn-info.disabled,
+.btn-info:disabled,
+.btn-info[disabled] {
+  background-color: #ee813f;
+  background-image: none;
+}
+.btn-warning {
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+  border-color: #EE3F55;
+  background-color: #EE3F55;
+}
+.btn-warning:hover,
+.btn-warning:focus {
+  background-color: #EE3F55;
+  background-position: 0 -15px;
+}
+.btn-warning:active,
+.btn-warning.active {
+  background-color: #EE3F55;
+  border-color: #EE3F55;
+}
+.btn-warning.disabled,
+.btn-warning:disabled,
+.btn-warning[disabled] {
+  background-color: #EE3F55;
+  background-image: none;
+}
+
+.btn-danger {
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+  border-color: #FA333F;
+  background-color: #FA333F;
+}
+.btn-danger:hover,
+.btn-danger:focus {
+  background-color: #FA333F;
+  background-position: 0 -15px;
+}
+.btn-danger:active,
+.btn-danger.active {
+  background-color: #FA333F;
+  border-color: #FA333F;
+}
+.btn-danger.disabled,
+.btn-danger:disabled,
+.btn-danger[disabled] {
+  background-color: #FA333F;
+  background-image: none;
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  background-color: #1B1B1B;
+}
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  background-color: #1B1B1B;
+}
+.navbar-default {
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background: white;
+}
+.navbar-inverse {
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+@media (max-width: 768px) {
+  .navbar .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #fff;
+  }
+}
+.alert-success {
+  border-color: #02A66C;
+  background-color:#02A66C;
+  color:white;
+}
+.alert-info {
+  border-color: #ee813f;
+  background-color: #ee813f;
+  color:white;
+}
+.alert-warning {
+  border-color: #EE3F55;
+  background-color: #EE3F55;
+  color:white;
+}
+.alert-danger {
+  border-color: #FA333F;
+  background-color: #FA333F;
+  color:white;
+}
+a.list-group-item:hover,
+a.list-group-item:focus {
+  text-decoration: none;
+  color: white;
+  background-color: #1B1B1B;
+}
+.list-group {
+  margin: 0 10px 38px 10px;
+  background-color: white;
+  padding: 9.5px 3px 9.5px 4px;
+  border: 2px solid #1B1B1B;
+  -webkit-box-shadow: 0px 0px 0 5px white;
+  box-shadow: 0px 0px 0 5px white;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  color:black;
+}
+
+.list-group-item.active,
+.list-group-item.active:hover,
+.list-group-item.active:focus {
+  z-index: 2;
+  color: #ffffff;
+  background-color: #1B1B1B;
+  border-color: #1B1B1B;
+}
+
+.list-group-item.active .badge,
+.list-group-item.active:hover .badge,
+.list-group-item.active:focus .badge {
+  text-shadow: none;
+}
+.well {
+  border-color: #02A66C;
+}
+
+hr{
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 2px solid white;
+  margin: 1em 0;
+  padding: 0; 
+}
+h1 {
+  font-size: 30px;
+  line-height:30px;
+}
+h2 {
+  font-size: 25px;
+  line-height:25px;
+}
+h3 {
+  font-size: 20px;
+  line-height:20px;
+  
+}
+h4 {
+  font-size: 18px;
+  line-height:18px;
+}
+
+.lead {
+  margin-bottom: 0px;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 150%;
+}
+
+.dropdown-menu > li > a {
+  display: block;
+  padding: 0 10px;
+  clear: both;
+  font-weight: bold;
+  line-height: 19px;
+  color: #000000;
+  white-space: nowrap;
+}
+/*# sourceMappingURL=bootstrap-theme.css.map */
+
