@@ -1,86 +1,11 @@
 /*
-Theme Name: JavaSparrow Cyberpunk
-Theme URI: http://project-sparrow.ml/blog
-Author: Episodes,Chris Barnes
-Author URI: http://project-sparrow.ml/blog
+Theme Name: pure-bootstrap
+Theme URI: https://github.com/corndogcomputers/pure-bootstrap
+Author: corndogcomputers
+Author URI: https://github.com/corndogcomputers/pure-bootstrap
+Description: Pure bootstrap is a barebones bootstrap theme. Code your own damn site.
+Version: 1.0
+Text Domain: pure-bootstrap
+Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, custom-header, custom-menu, featured-images, featured-image-header, full-width-template, sticky-post, threaded-comments, light, translation-ready, custom-background, facebook-photo-album-shortcodes, contact-form-shortcodes
 */
-/* 修复sidebar中的UL点 */
-.sidebar_title{
-	font-weight: bold;
-	color:black;
-	
-	padding-top: 10px;
-}
-.list-group .sidebar ul
-{
-  list-style-type: none;
-  padding: 0px;
-}
-.list-group .sidebar li
-{
-  list-style-type: none;
-}
-
-.commentlist {
-	list-style-type: none;
-}
-.title{
-	color: white;
-	text-shadow: 2px 2px #5d0e35;
-}
-.title a:hover{
-	background: transparent;
-	text-shadow: 2px 2px #264bff;
-}
-.title a{
-	color: white;
-	text-shadow: 2px 2px #5d0e35;
-}
-p{
-	color: white;
-}
-.page-header {
-  padding-bottom: 8.5px;
-  margin: 38px 0 19px;
-  border-bottom: 2px solid white;
-}
-.label-detail {
-	background-color: white;
-	color:#5d0e35;
-}
-.label-detail:hover {
-	background-color: #5d0e35;
-	color:white;
-}
-.label-detail a:hover{
-	background-color: transparent;
-	color:white;
-}
-.sidebar ul
-{
-	padding: 0px;
-}
-
-.sidebar ul li
-{
-	list-style-type: none;
-}
-
-.sidebar a:hover
-{
-	background-color: #1B1B1B;
-	color:white;
-}
-.commentlist
-{
-	list-style-type: none;
-}
-.bt-comments li{
-	list-style-type: none;
-	padding: 5px;
-}
-pre {
-	border-style: none;
-	padding: 0px;
-	margin: 5px;
-}
+@import url(css/base.min.css);

@@ -1,68 +1,48 @@
-<?php get_header(); ?>
-			
-			<div id="content" class="clearfix row">
-			
-				<div id="main" class="col-md-8 clearfix" role="main">
-
-					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-					
-					<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
-						
-						<header>
-						
-							<?php the_post_thumbnail( 'wpbs-featured' ); ?>
-							
-							<div class="page-header"><h1 class="title" itemprop="headline"><?php the_title(); ?></h1></div>
-							
-							<p class="meta"><?php _e("發表於", "wpbootstrap"); ?> <span class="label label-detail"><time datetime="<?php echo the_time('Y-m-j'); ?>" pubdate><?php echo get_the_date('F jS, Y', '','', FALSE); ?></time></span> <?php _e(",", "wpbootstrap"); ?> <span class="label label-detail"><?php the_author_posts_link(); ?></span><?php _e(",", "wpbootstrap"); ?> <span class="label label-detail"><?php the_category(','); ?></span></p>
-						
-						</header> <!-- end article header -->
-					
-						<section class="post_content clearfix" itemprop="articleBody">
-							<?php the_content(); ?>
-							
-							<?php wp_link_pages(); ?>
-					
-						</section> <!-- end article section -->
-						
-						<footer>
-			
-							<?php the_tags('<p class="tags"><span class="tags-title">' . __("Tags","wpbootstrap") . ':</span> ', ' ', '</p>'); ?>
-							
-							<?php 
-							// only show edit button if user has permission to edit posts
-							if( $user_level > 0 ) { 
-							?>
-							<a href="<?php echo get_edit_post_link(); ?>" class="btn btn-success edit-post"><i class="icon-pencil icon-white"></i> <?php _e("Edit post","wpbootstrap"); ?></a>
-							<?php } ?>
-							
-						</footer> <!-- end article footer -->
-					
-					</article> <!-- end article -->
-					<hr/>
-					<?php comments_template('',true); ?>
-					
-					<?php endwhile; ?>			
-					
-					<?php else : ?>
-					
-					<article id="post-not-found">
-					    <header>
-					    	<h1><?php _e("Not Found", "wpbootstrap"); ?></h1>
-					    </header>
-					    <section class="post_content">
-					    	<p><?php _e("Sorry, but the requested resource was not found on this site.", "wpbootstrap"); ?></p>
-					    </section>
-					    <footer>
-					    </footer>
-					</article>
-					
-					<?php endif; ?>
-			
-				</div> <!-- end #main -->
-    
-				<?php get_sidebar(); // sidebar 1 ?>
-    
-			</div> <!-- end #content -->
-
+<?php
+    /**
+    *   Theme: Pure Bootstrap
+    *   The single post template.
+    *   This is the template that displays all pages by default.
+    *   @package Pure Bootstrap
+    *   @version Pure Bootstrap 1.1.1
+    */
+get_header(); ?>
+    <div class="container main-content default-page">
+        <div id="content" class="col-sm-9 col-md-9">
+            <?php while(have_posts()): the_post() ?>
+                <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                    <?php if ( has_post_thumbnail()): ?>
+                    <div class="img-thumbnail">
+                        <?php the_post_thumbnail('large', array('class' => 'img-responsive')); ?>
+                    </div>
+                <?php endif; ?>
+                    <article>
+                        <h2 ><?php the_title(); ?></h2>
+                        <?php the_content(); ?>
+                        <div class="entry-date">
+                            By<a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author">
+                                <?php printf( __( ' %s', 'pure-bootstrap' ), get_the_author() ); ?>
+                            </a> on <?php echo get_the_date(); ?>
+                        </div>
+                        <div class="post-tags">
+                            <?php
+                                $posttags = get_the_tags();
+                                if ($posttags) {
+                                    foreach($posttags as $tag) {
+                                        echo '<small><a href="'.get_tag_link($tag->term_id).'"> <i class="fa fa-tag"></i> '. $tag->name . '</a></small>';
+                                    }
+                                }
+                            ?>
+                        </div>
+                    </article>
+                </div>
+            <?php endwhile; ?>
+            <?php if (comments_open($post_id) ): ?>
+            <div class="post-comments">
+                <?php comments_template('', true); ?>
+            </div>
+        <?php endif; ?>
+        </div>
+        <?php get_sidebar(); ?>
+    </div>
 <?php get_footer(); ?>

@@ -1,8 +1,8 @@
 <?php
     /**
     *   Theme: Pure Bootstrap
-    *   The archive page template.
-    *   This is the template that displays an archive month.
+    *   The category page template.
+    *   This is the template that displays a category.
     *   @package Pure Bootstrap
     *   @version Pure Bootstrap 1.1.1
     */
@@ -10,9 +10,7 @@
 get_header(); ?>
     <div class="container main-content default-page">
         <div id="content" class="col-sm-9 col-md-9">
-            <?php if ( single_month_title(' ', false) ): ?>
-                <h2>Archive: <?php echo single_month_title(' ', false); ?></h2>
-            <?php endif; ?>
+            <h2>Category: <?php the_category(', '); ?></h2>
             <?php while(have_posts()): the_post() ?>
                 <div class="col-sm-6 col-md-6 card">
                     <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

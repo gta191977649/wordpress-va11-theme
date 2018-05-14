@@ -1,85 +1,96 @@
-<!doctype html>  
+<?php
+    /**
+    *   Theme: Pure Bootstrap
+    *   The template for displaying the header.
+    *   Displays all of the <head> section and everything up till <div id="content">
+    *   @package Pure Bootstrap
+    *   @version Pure Bootstrap 1.1.1
+    */
+?><!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title><?php bloginfo('title'); ?> | <?php
+    if (!is_front_page()) {
+        echo single_post_title();
+    }
+    else {
+        bloginfo('description');
+    }
+?></title>
+<link href="<?php bloginfo('stylesheet_url'); ?>" rel="stylesheet">
+<!-- Pure Bootstrap WordPress theme by sudoFx -->
+<?php wp_enqueue_script("jquery"); ?>
+<?php wp_head(); ?>
+</head>
+<body <?php body_class(); ?>>
 
-<!--[if IEMobile 7 ]> <html <?php language_attributes(); ?>class="no-js iem7"> <![endif]-->
-<!--[if lt IE 7 ]> <html <?php language_attributes(); ?> class="no-js ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html <?php language_attributes(); ?> class="no-js ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html <?php language_attributes(); ?> class="no-js ie8"> <![endif]-->
-<!--[if (gte IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html <?php language_attributes(); ?> class="no-js"><!--<![endif]-->
-	
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title><?php wp_title( '|', true, 'right' ); ?></title>	
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
-  		<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
-  		
+<?php if ( show_header() ): ?>
+<header id="header">
+    <div class="container">
+        <div id="headerimg">
+            <h1>
+                <a href="<?php echo get_option('home'); ?>" class="site-title"><?php bloginfo('name'); ?></a>
+            </h1>
+            <div class="description site-slogan" style="display: none;">
+                <?php bloginfo('description'); ?>
+            </div>
+        </div>
+    </div>
+   
+</header>
+<?php endif ?>
 
-		<!-- wordpress head functions -->
-		<?php wp_head(); ?>
-		<!-- end of wordpress head -->
-		<!-- IE8 fallback moved below head to work properly. Added respond as well. Tested to work. -->
-			<!-- media-queries.js (fallback) -->
-		<!--[if lt IE 9]>
-			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>			
-		<![endif]-->
+<?php if ( show_header() ): ?>
+    <div id="nav-container" class="container va11-nopadding">
+        
+        <nav class="navbar navbar-default">
+<?php else: ?>
+        <nav class="navbar navbar-default">
+<?php endif ?>
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+  
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
+            
+        </div>
+        <!-- navbar search -->
+        
+        
+        <form id="navbar-searchform" class="navbar-form navbar-right" role="search" action="<?php echo esc_url( site_url() ); ?>" method="get">
+            <div class="form-group">
+                <input id="s" name="s" type="text" class="form-control" placeholder="<?php esc_attr_e( '', 'alienship' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>">
+            </div>
+            <button id="navbar-searchsubmit" type="submit" name="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+        </form>
+    
+        <!-- navbar menu -->
+        <?php
+            wp_nav_menu( array(
+                'menu'              => 'primary',
+                'theme_location'    => 'primary',
+                'depth'             => 2,
+                'container'         => 'div',
+                'container_class'   => 'collapse navbar-collapse',
+                'container_id'      => 'navbarCollapse',
+                'menu_class'        => 'nav navbar-nav',
+                'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+                'walker'            => new wp_bootstrap_navwalker())
+            );
+        ?>
+    </div>
+</nav>
 
-		<!-- html5.js -->
-		<!--[if lt IE 9]>
-			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->	
-		
-			<!-- respond.js -->
-		<!--[if lt IE 9]>
-		          <script type='text/javascript' src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
-		<![endif]-->	
-	</head>
-	
-	<body>
-		
-		<!-- NAV -->
-		<div class="container container-default" style="padding:0px;">	
-			<header role="banner" >
-				
-			<nav class="navbar navbar-default">
-				<div class="container">
-          
-					<div class="navbar-header" >
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" aria-expanded="false" aria-controls="navbar" data-target="#navbar">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
+<?php if ( show_header() ): ?>
+    </div>
+<?php endif ?>
 
-						<a class="navbar-brand" title="<?php echo get_bloginfo('description'); ?>" href="<?php echo home_url(); ?>"><i class="fa fa-twitter" aria-hidden="true"></i> <?php bloginfo('name'); ?></a>
-					</div>
-					<div id="navbar" class="navbar-collapse collapse">
-						<?php wp_bootstrap_main_nav(); // Adjust using Menus in Wordpress Admin ?>
-					</div><!--/.nav-collapse -->
-					
-					
-					<!--
-					<div class="collapse navbar-collapse navbar-responsive-collapse">
-						
-
-						<?php //if(of_get_option('search_bar', '1')) {?>
-						<form class="navbar-form navbar-right" role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
-							<div class="form-group">
-								<input name="s" id="s" type="text" class="search-query form-control" autocomplete="off" placeholder="<?php _e('Search','wpbootstrap'); ?>">
-							</div>
-						</form>
-						<?php //} ?>
-					</div>
-					-->
-				</div> <!-- end .container -->
-			</nav> <!-- end .navbar -->
-			
-		</header> <!-- end header -->
-		</div>
-		
-		<!-- Conetext -->
-		<div class="container container-default">
-			
-		
-		<?php get_sidebar(); // sidebar 1 ?>
-		
+<div id="container">

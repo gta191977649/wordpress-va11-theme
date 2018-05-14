@@ -1,39 +1,35 @@
-
-		
-		</div> <!-- end #container -->
-		
-			<footer role="contentinfo">
-				<div class="container text-center">
-					
-					 
-					  <div id="widget-footer" class="clearfix row">
-						<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('footer1') ) : ?>
-						<?php endif; ?>
-						<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('footer2') ) : ?>
-						<?php endif; ?>
-						<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('footer3') ) : ?>
-						<?php endif; ?>
-					  </div>
-						
-						<nav class="clearfix">
-							<?php wp_bootstrap_footer_links(); // Adjust using Menus in Wordpress Admin ?>
-						</nav>
-						
-						
-				
-						<p >&copy; <?php bloginfo('name'); ?> 2017 | <i class="fa fa-twitter" aria-hidden="true"></i> プロジェクトスパルウ WEB解决方案 | Theme: Episodes</p>
-					
-				
-				</div>
-			</footer> <!-- end footer -->		
-		<!--[if lt IE 7 ]>
-  			<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
-  			<script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
-		<![endif]-->
-		
-		<?php wp_footer(); // js scripts are inserted using this function ?>
-		<audio id='audio_hover' src='https://api.project-sparrow.ml/mouse_hover.ogg'/>
-		<audio id='audio_click' src='https://api.project-sparrow.ml/buttonclick.ogg'/>
-	</body>
-
+<?php
+    /**
+    *   Theme: Pure Bootstrap
+    *   The template for displaying the footer.
+    *   Contains the closing of the #content div and all content after
+    *   @package Pure Bootstrap
+    *   @version Pure Bootstrap 1.1.1
+    */
+?>
+        </div>
+        <footer>
+            <div id="footer-sidebar" class="secondary container">
+                <div id="footer-widget-section1" class="col-sm-3 col-md-3 footer-widget-area text-center">
+                    <?php dynamic_sidebar('footer-widget-section-1'); ?>
+                </div>
+                <div id="footer-widget-section2" class="col-sm-3 col-md-3 footer-widget-area text-center">
+                    <?php dynamic_sidebar('footer-widget-section-2'); ?>
+                </div>
+                <div id="footer-widget-section3" class="col-sm-3 col-md-3 footer-widget-area text-center">
+                    <?php dynamic_sidebar('footer-widget-section-3'); ?>
+                </div>
+                <div id="footer-widget-section4" class="col-sm-3 col-md-3 footer-widget-area text-center">
+                    <?php dynamic_sidebar('footer-widget-section-4'); ?>
+                </div>
+            </div>
+            <div style="clear-both"></div>
+            <div class="text-center">
+            	<div class="copyright">
+                    &copy;<?=date('Y')?> <?php bloginfo('name'); ?>
+                </div>
+            </div>
+        </footer>
+        <?php wp_footer();?>
+    </body>
 </html>

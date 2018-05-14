@@ -1,70 +1,51 @@
-<?php get_header(); ?>
-			
-			<div id="loading" style="text-align: center;"></div>
-			<div id="content" class="clearfix row">
-				
-				<div id="main" class="col-md-8 clearfix" role="main">
-
-					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-					
-					<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
-						
-						<header>
-						
-							<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'wpbs-featured' ); ?></a>
-							
-							<div class="page-header"><h1 class="title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1></div>
-							
-							<p class="meta"><?php _e("發表於", "wpbootstrap"); ?> <span class="label label-detail"><time datetime="<?php echo the_time('Y-m-j'); ?>" pubdate><?php echo get_the_date('F jS, Y', '','', FALSE); ?></time></span> <?php _e(",", "wpbootstrap"); ?> <span class="label label-detail"><?php the_author_posts_link(); ?></span><?php _e(",", "wpbootstrap"); ?> <span class="label label-detail"><?php the_category(','); ?></span></p>
-						
-						</header> <!-- end article header -->
-					
-						<section class="post_content clearfix">
-							<?php the_content( __("Read more &raquo;","wpbootstrap") ); ?>
-						</section> <!-- end article section -->
-						
-						<footer>
-			
-							<p class="tags"><?php the_tags('<span class="tags-title">' . __("Tags","wpbootstrap") . ':</span> ', ' ', ''); ?></p>
-							
-						</footer> <!-- end article footer -->
-					
-					</article> <!-- end article -->
-					
-					<?php endwhile; ?>	
-					
-					<?php if (function_exists('wp_bootstrap_page_navi')) { // if expirimental feature is active ?>
-						
-						<?php wp_bootstrap_page_navi(); // use the page navi function ?>
-						
-					<?php } else { // if it is disabled, display regular wp prev & next links ?>
-						<nav class="wp-prev-next">
-							<ul class="pager">
-								<li class="previous"><?php next_posts_link(_e('&laquo; Older Entries', "wpbootstrap")) ?></li>
-								<li class="next"><?php previous_posts_link(_e('Newer Entries &raquo;', "wpbootstrap")) ?></li>
-							</ul>
-						</nav>
-					<?php } ?>		
-					
-					<?php else : ?>
-					
-					<article id="post-not-found">
-					    <header>
-					    	<h1><?php _e("Not Found", "wpbootstrap"); ?></h1>
-					    </header>
-					    <section class="post_content">
-					    	<p><?php _e("Sorry, but the requested resource was not found on this site.", "wpbootstrap"); ?></p>
-					    </section>
-					    <footer>
-					    </footer>
-					</article>
-					
-					<?php endif; ?>
-			
-				</div> <!-- end #main -->
-    
-				
-    
-			</div> <!-- end #content -->
-
+<?php
+    /**
+    *   Theme: Pure Bootstrap
+    *   The default index page template.
+    *   This is the template that displays all pages by default.
+    *   @package Pure Bootstrap
+    *   @version Pure Bootstrap 1.1.1
+    */
+get_header(); ?>
+    <div class="container main-content va11-theme" id="main-container">
+        <div id="content" class="col-sm-9 col-md-9">
+            <?php while(have_posts()): the_post() ?>
+                <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                    
+                            
+                        <div class="caption">
+                            <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                            <p><?php the_excerpt(); ?></p>
+                            <div class="post-meta">
+                                <div class="entry-date">
+                                    By<a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author">
+                                        <?php printf( __( ' %s', 'pure-bootstrap' ), get_the_author() ); ?>
+                                    </a> on <?php echo get_the_date(); ?>
+                                </div>
+                                <div class="post-tags">
+                                    <?php
+                                        $posttags = get_the_tags();
+                                        if ($posttags) {
+                                            foreach($posttags as $tag) {
+                                                echo '<small><a href="'.get_tag_link($tag->term_id).'"> <i class="fa fa-tag"></i> '. $tag->name . '</a></small>';
+                                            }
+                                        }
+                                    ?>
+                                </div>
+                            </div>
+                            <div>
+                                <p>
+                                    <a href="<?php the_permalink(); ?>" class="btn btn-sm btn-primary" role="button">read more</a>
+                                </p>
+                            </div>
+                        </div>
+                 
+                </div>
+            <?php endwhile; ?>
+            <div class="post-comments">
+                <?php comments_template('', true); ?>
+            </div>
+        </div>
+        <?php get_sidebar(); ?>
+    </div>
 <?php get_footer(); ?>

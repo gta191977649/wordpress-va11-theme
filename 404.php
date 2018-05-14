@@ -1,30 +1,23 @@
-<?php get_header(); ?>
-			
-			<div id="content" class="clearfix row">
-			
-				<div id="main" class="col-md-8 clearfix" role="main">
+<?php
+    /**
+    *   Theme: Pure Bootstrap
+    *   404 page
+    *   @package Pure Bootstrap
+    *   @version Pure Bootstrap 1.1.1
+    */
 
-					
-						
-						<h1><?php _e("404","wpbootstrap"); ?></h1>
-						<p><?php _e("啥都没找到","wpbootstrap"); ?></p>
-													
-				
-			
-				
-					
-					<p><?php _e("你可以尝试搜索一下你要找的东西","wpbootstrap"); ?></p>
-
-					<div class="row">
-						<div class="col col-lg-12">
-							<?php get_search_form(); ?>
-						</div>
-					</div>
-					
-					
-			
-				</div> <!-- end #main -->
-    
-			</div> <!-- end #content -->
-
+get_header(); ?>
+    <div class="container main-content default-page">
+        <div id="content" class="col-sm-9 col-md-9">
+            <div class="jumbotron" style="min-height: 400px;">
+                <h1 class="text-center padding-bottom-20">
+                    <i class="fa fa-cogs"></i> 404 Not Found
+                </h1>
+                <p class="lead text-center padding-top-20" style="max-width: 400px; margin: 0 auto;">
+                    It looks like you've requested a page that doesn't exist on this website.
+                </p>
+            </div>
+        </div>
+        <?php get_sidebar(); ?>
+    </div>
 <?php get_footer(); ?>

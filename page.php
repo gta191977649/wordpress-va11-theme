@@ -1,55 +1,27 @@
-<?php get_header(); ?>
-			
-			<div id="content" class="clearfix row">
-			
-				<div id="main" class="col-md-8 clearfix" role="main">
-
-					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-					
-					<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
-						
-						<header>
-							
-							<div class="page-header"><h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1></div>
-						
-						</header> <!-- end article header -->
-					
-						<section class="post_content clearfix" itemprop="articleBody">
-							<?php the_content(); ?>
-					
-						</section> <!-- end article section -->
-						
-						<footer>
-			
-							<?php the_tags('<p class="tags"><span class="tags-title">' . __("Tags","wpbootstrap") . ':</span> ', ', ', '</p>'); ?>
-							
-						</footer> <!-- end article footer -->
-					
-					</article> <!-- end article -->
-					
-					<?php comments_template('',true); ?>
-					
-					<?php endwhile; ?>		
-					
-					<?php else : ?>
-					
-					<article id="post-not-found">
-					    <header>
-					    	<h1><?php _e("Not Found", "wpbootstrap"); ?></h1>
-					    </header>
-					    <section class="post_content">
-					    	<p><?php _e("Sorry, but the requested resource was not found on this site.", "wpbootstrap"); ?></p>
-					    </section>
-					    <footer>
-					    </footer>
-					</article>
-					
-					<?php endif; ?>
-			
-				</div> <!-- end #main -->
-    
-				<?php get_sidebar(); // sidebar 1 ?>
-    
-			</div> <!-- end #content -->
-
+<?php
+    /**
+    *   Theme: Pure Bootstrap
+    *   The page template.
+    *   This is the template that displays all pages by default.
+    *   @package Pure Bootstrap
+    *   @version Pure Bootstrap 1.1.1
+    */
+get_header(); ?>
+    <div class="container main-content  default-page">
+        <div id="content" class="col-sm-9 col-md-9">
+            <?php while(have_posts()): the_post() ?>
+                <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                    <?php if ( has_post_thumbnail()) : ?>
+                        <div class="img-thumbnail">
+                            <?php the_post_thumbnail('large', array('class' => 'img-responsive')); ?>
+                        </div>
+                    <?php endif; ?>
+                    <div class="padding-top-20 padding-bottom-20">
+                        <?php the_content(); ?>
+                    </div>
+                </div>
+            <?php endwhile; ?>
+        </div>
+        <?php get_sidebar(); ?>
+    </div>
 <?php get_footer(); ?>
